@@ -1,0 +1,236 @@
+{% from "_formsH.html" import render_field %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <style>
+        #show-info{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(51, 146, 214, 0.4);
+        }
+        .box {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            height: 100%;
+            -webkit-box-align: center;
+               -ms-flex-align: center;
+                  align-items: center;
+            -webkit-box-pack: center;
+               -ms-flex-pack: center;
+             justify-content: center;
+
+        }
+        #content{
+            text-align: center;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            flex-direction: column;
+            -webkit-box-align: center;
+               -ms-flex-align: center;
+                  align-items: center;
+            -webkit-box-pack: center;
+               -ms-flex-pack: center;
+             justify-content: center;
+            height: 60%;
+            width: 30%;
+            background: #333;
+            color: aqua;
+        }
+        #todos{
+            list-style-type: none;
+        }
+        table, td {
+          border: 1px solid black;
+        }
+        .hidden {
+                display: none;
+                padding: 25px;
+                margin-bottom: 50px;
+            }
+        .main{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            margin: 0 !important;
+            flex-direction: row;
+        }
+        form{
+            margin: 0%;
+        }
+        .form{
+            height: 100%;
+            
+            width: 40%;
+        }
+        .default{
+            height: 100%;
+            margin: 0;
+            margin-right: 10%;
+            width: 70%;
+        }
+        .formulario{
+            width: 70% !important;
+            margin-left: 10%;
+
+            height: 100%;
+        }
+        
+        </style>
+</head>
+<body>
+    <h1>Tu Carrito</h1>
+    <div class="main">
+    <div class="form">
+        <form method=post class="formulario">
+          
+            {{ render_field(form.producto) }}
+            {{ render_field(form.cantidad) }}
+          
+          <input type="submit" class="btn btn-primary" value="Register">
+        </form>
+      </div>
+    <table class="default">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+            </tr>
+            {% for curso in cursos%}
+            <tr>
+                <td id = "alumno">
+                    {{curso.id}}
+                </td>
+                <td>
+                    <button id = {{curso.id}} onclick="show_data({{curso.id}})">{{curso.producto}}</button>
+                </td>
+                <td>
+                    <p>{{curso.cantidad}}</p>
+                </td>
+                <td>
+                    <a href="actualizar/{{curso.id}}">
+                        <button id = {{curso.id}} class="btn btn-primary">Actualizar</button>
+                    </a>
+                </td>
+                <td>
+                    <button id = {{curso.id}} class="btn btn-primary" onclick="delete_data({{curso.id}})">Borrar</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </thead>
+
+    </table>
+    
+</div>
+    <div id="show-info" class="hidden">
+        <div class="box">
+        <div id="content">
+            <h1>Datos del Carrito</h1>
+            <ul id = 'todos'>
+
+            </ul>
+            <button onclick="ocultar()">Cerrar</button>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function show_data(user){
+        document.getElementById('todos').innerHTML = '';
+        console.log(user);
+        fetch('/show-data/'+user, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function(response) {
+            console.log('response: ', response);
+            return response.json();
+        }).then(function(responseJson) {
+            console.log('responseJson = ', responseJson);
+            const li1 = document.createElement('li');
+            const li2 = document.createElement('li');
+            const li3 = document.createElement('li');
+            li1.innerHTML = responseJson['user'];
+            li2.innerHTML = responseJson['producto'];
+            li3.innerHTML = responseJson['cantidad'];
+            document.getElementById('todos').appendChild(li1);
+            document.getElementById('todos').appendChild(li2);
+            document.getElementById('todos').appendChild(li3);
+
+            document.getElementById('show-info').className = '';
+        })
+    }
+    function ocultar(){
+        document.getElementById('show-info').className = 'hidden'; 
+    }
+
+    function delete_data(id){
+        fetch('/delete/'+id,{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function(response){
+            return response.json();
+        }).then(function(responseJson){
+            location.reload();
+        })
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

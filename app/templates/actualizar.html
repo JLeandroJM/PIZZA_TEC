@@ -1,0 +1,181 @@
+{% from "_formsH.html" import render_field %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Carrito</title>
+    <style>
+        #show-info{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(51, 146, 214, 0.4);
+        }
+        .box {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            height: 100%;
+            -webkit-box-align: center;
+               -ms-flex-align: center;
+                  align-items: center;
+            -webkit-box-pack: center;
+               -ms-flex-pack: center;
+             justify-content: center;
+
+        }
+        #content{
+            text-align: center;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            flex-direction: column;
+            -webkit-box-align: center;
+               -ms-flex-align: center;
+                  align-items: center;
+            -webkit-box-pack: center;
+               -ms-flex-pack: center;
+             justify-content: center;
+            height: 60%;
+            width: 30%;
+            background: #333;
+            color: aqua;
+        }
+        #todos{
+            list-style-type: none;
+        }
+        table, td {
+          border: 1px solid black;
+        }
+        .hidden {
+                display: none;
+                padding: 25px;
+                margin-bottom: 50px;
+            }
+        .main{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            margin: 0 !important;
+            flex-direction: row;
+        }
+        form{
+            margin: 0%;
+        }
+        .form{
+            height: 100%;
+            
+            width: 40%;
+        }
+        .default{
+            height: 100%;
+            margin: 0;
+            margin-right: 10%;
+            width: 70%;
+        }
+        .formulario{
+            width: 70% !important;
+            margin-left: 10%;
+
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="form">
+            <form method=post class="formulario">
+              
+                {{ render_field(form.producto) }}
+                {{ render_field(form.cantidad) }}
+              
+              <input type="submit" class="btn btn-primary" value="Register">
+            </form>
+          </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+    <h1>Actualizar Registro</h1>
+    <div class="main">
+        <div class="form">
+            <form method=post class="formulario" id="form">
+          
+                {{ render_field(form.nombre) }}
+                {{ render_field(form.apellido) }}
+                {{ render_field(form.edad) }}
+                {{ render_field(form.ciclo) }}
+                {{ render_field(form.carrera) }}
+          
+                <input type="submit" class="btn btn-primary" value="Actualizar">
+            </form>
+        </div>
+    </div>
+-->
