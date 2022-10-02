@@ -52,7 +52,7 @@ a:hover{
     border-color:#007bff
 }
 .btn-outline-primary{
-    color:#007bff;
+    color:#ff9100;
     border-color:#007bff
 }
 .btn-outline-primary:hover{
@@ -248,7 +248,7 @@ hr{
 
 }
 .box-content:hover{
-    filter:drop-shadow(0 0 1rem rgb(147, 26, 196))
+    filter:drop-shadow(0 0 1rem rgb(175, 135, 26))
 }
 
 .box-content {
@@ -273,7 +273,7 @@ hr{
     position: relative;
 }
 .centrado::before{
-    background-image: url("../img/fondojpg.jpg");
+    background-image: url("./img/fondo.jpg");
     content: "";
     
     background-size: cover;
@@ -282,10 +282,7 @@ hr{
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: 0.75;
-    transition: opacity 1s;
+    
+    
 }
 
-.centrado:hover::before{
-    opacity: 0.4;
-}

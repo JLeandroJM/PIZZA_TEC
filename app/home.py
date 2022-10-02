@@ -30,7 +30,7 @@ from itsdangerous import SignatureExpired, URLSafeTimedSerializer
 from .db.database import db
 
 from . import forms 
-from .db.models import Carrito, Usuario
+from .db.models import Carrito, Usuario, Pizzas
 from werkzeug.utils import secure_filename
 
 app = Blueprint('login', __name__, 
@@ -47,11 +47,13 @@ def init_login(app):
 
 @app.route('/', methods=['GET'])
 def index():
+    p1 = Pizzas(name = "Americana",size = "personal",price =10)
+    db.session.add(p1)
+    db.session.commit()
+
     return render_template('Inicio.html')
 
-@app.errorhandler(404)
-def not_found(e):
-    return render_template("404.html")
+
 
 @app.route('/sign-up/', methods=['GET', 'POST'])
 def signup():
