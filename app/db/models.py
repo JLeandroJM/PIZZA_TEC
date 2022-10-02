@@ -28,7 +28,7 @@ class Usuario(UserMixin, db.Model):
 class Pizzas(db.Model):
     __tablename__= "pizzas"
     
-    name = db.Column(db.String(20),primary_key =True)
+    name = db.Column(db.String(20),primary_key=True)
     size = db.Column(db.String(20),nullable=False)
     price = db.Column(db.Integer(),nullable = False)
     
@@ -43,6 +43,7 @@ class Pizzas(db.Model):
 
     def __repr__(self):
         response = {}
+       
         response['name'] = self.name
         response['size'] = self.size
         response['price'] = self.price
@@ -56,6 +57,7 @@ class Carrito(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     id_usuario = db.Column(db.String(50), db.ForeignKey('usuario.email'), nullable=False)
     producto = db.Column(db.String(20), db.ForeignKey('pizzas.name'), nullable=False)
+    #producto_id = db.Column(db.Integer(), db.ForeignKey('pizzas.id'), nullable=False)
   #  price = db.Column(db.Integer(), db.ForeignKey('pizzas.price'), nullable=False)
     cantidad = db.Column(db.Integer, nullable = False)   
     
@@ -64,6 +66,7 @@ class Carrito(db.Model):
 
     def __repr__(self):
         response = {}
+        
         response['pizza'] = self.pizza
         response['usuario'] = self.id_usuario 
         response['price'] = self.price

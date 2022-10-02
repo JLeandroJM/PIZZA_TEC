@@ -47,10 +47,25 @@ def init_login(app):
 
 @app.route('/', methods=['GET'])
 def index():
-    p1 = Pizzas(name = "Americana",size = "personal",price =10)
-   # p1 = Pizzas(name = "Americana",size = "personal",price =10)
+    nombre1 =  Pizzas.query.filter_by(name = "Americana").first()
+    if nombre1 is None:
+        p1 = Pizzas(name = "Americana",size = "personal",price =10)
+        db.session.add(p1)
+        db.session.commit()
+
     
-    lista =[p1]
+    p2 = Pizzas(name = "Peperoni",size = "personal",price =10)
+    p3 = Pizzas(name = "Hawaiana",size = "personal",price =10)
+    p4 = Pizzas(name = "Vegetariana",size = "personal",price =10)
+    p5 = Pizzas(name = "Chicken BBQ",size = "personal",price =10)
+    p6 = Pizzas(name = "Suprema",size = "personal",price =10)
+    p7 = Pizzas(name = "Napolitana",size = "personal",price =10)
+    p8 = Pizzas(name = "Margarita",size = "personal",price =10)
+    p9 = Pizzas(name = "Meet Lover",size = "personal",price =10)
+    p10 = Pizzas(name = "Champiñones",size = "personal",price =10)
+
+    
+    lista =[p2,p3,p4,p5,p6,p7,p8,p9,p10]
     for i in lista:
         verificar = i.name
         nombre =  Pizzas.query.filter_by(name = verificar).first()
