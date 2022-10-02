@@ -47,9 +47,9 @@ def init_login(app):
 
 @app.route('/', methods=['GET'])
 def index():
-    p1 = Pizzas(name = "Americana",size = "personal",price =10)
-    db.session.add(p1)
-    db.session.commit()
+    #p1 = Pizzas(name = "Americana",size = "personal",price =10)
+    #db.session.add(p1)
+    #db.session.commit()
 
     return render_template('Inicio.html')
 

@@ -1,4 +1,4 @@
-a{color:#007bff;
+a{color:#311906;
     text-decoration:none;
     background-color:transparent
 }
@@ -35,7 +35,7 @@ a:hover{
 }
 .btn-primary{
     color:#fff;
-    background-color:#007bff;
+    background-color:#051220;
     border-color:#007bff
 }
 .btn-primary:hover{
@@ -53,12 +53,12 @@ a:hover{
 }
 .btn-outline-primary{
     color:#ff9100;
-    border-color:#007bff
+    border-color:#3f2405
 }
 .btn-outline-primary:hover{
     color:#fff;
-    background-color:#007bff;
-    border-color:#007bff
+    background-color:#3f2405;
+    border-color:#3f2405
 }
 .btn-outline-primary:hover > a{
     color:#fff;
@@ -239,16 +239,17 @@ hr{
     display: -ms-flexbox;
     display: flex;
     height: 100%;
-    -webkit-box-align: center;
-       -ms-flex-align: center;
+    -webkit-box-align: right;
+       -ms-flex-align: right;
           align-items: center;
-    -webkit-box-pack: center;
-       -ms-flex-pack: center;
+    -webkit-box-pack: right;
+       -ms-flex-pack: right;
      justify-content: center;
+     left: 400px;
 
 }
 .box-content:hover{
-    filter:drop-shadow(0 0 1rem rgb(175, 135, 26))
+    filter:drop-shadow(0 0 1rem rgb(87, 34, 3))
 }
 
 .box-content {
@@ -265,8 +266,8 @@ hr{
      justify-content: center;
     height: 60%;
     width: 30%;
-    background: #333;
-    color: #fff;
+    background: rgb(192, 151, 63);
+    color: rgb(31, 24, 24);
     
 }
 .centrado{
