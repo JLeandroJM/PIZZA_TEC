@@ -135,7 +135,7 @@ body{
     justify-content: center;
     display: flex;
 
-    background-color: #e9ecef;
+    background-image: url("./img/fondo.jpg");
     width: 50%;
     height: 100%;
     

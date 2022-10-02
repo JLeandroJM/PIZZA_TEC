@@ -47,9 +47,17 @@ def init_login(app):
 
 @app.route('/', methods=['GET'])
 def index():
-    #p1 = Pizzas(name = "Americana",size = "personal",price =10)
-    #db.session.add(p1)
-    #db.session.commit()
+    p1 = Pizzas(name = "Americana",size = "personal",price =10)
+   # p1 = Pizzas(name = "Americana",size = "personal",price =10)
+    
+    lista =[p1]
+    for i in lista:
+        verificar = i.name
+        nombre =  Pizzas.query.filter_by(name = verificar).first()
+        if nombre is None:
+            db.session.add(i)
+            db.session.commit()
+    
 
     return render_template('Inicio.html')
 
