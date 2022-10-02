@@ -10,36 +10,35 @@
 
     <title>Login</title>
 </head>
-<body>
+<body class="fondo"  >
     <div class="cuerpo">
-        <div class="lado_izquierdo">
-            <div class="logo">
-                <img src="../static/css/img/logo.jfif" alt="LOGO">
-                
-            </div>
+
+        <div class="cuerpo-content">
+           
             <div class="textos">
                 <h1>Sign In</h1>
                 <h3>Your Account</h3>
             </div>
+            <br> 
+        </br>
             <div class="form">
               <form method=post class="formulario">
                 
                   {{ render_field(form.username) }}
                   {{ render_field(form.password) }}
+                  <br> 
+                </br>
                 
                 <input type="submit" class="btn btn-primary" value="Register">
               </form>
+              
             </div>
             <div class="textos">
                 <h3>¿No tienes cuenta? <a href="/sign-up">Regístrate</a></h3>
             </div>
 
         </div>
-        <div class="lado_derecho">
-            <div id="lienzo">
-                
-            </div>
-        </div>
+        
     </div>
 </body>
 <script src="../static/js/index.js?token="></script>
