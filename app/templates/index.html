@@ -89,15 +89,18 @@
 <body>
     <h1>Tu Carrito</h1>
     <div class="main">
-    <div class="form">
-        <form method=post class="formulario">
-          
-            {{ render_field(form.producto) }}
-            {{ render_field(form.cantidad) }}
-          
-          <input type="submit" class="btn btn-primary" value="Register">
-        </form>
-      </div>
+        <div class="form">
+            <form method=post class="formulario">
+                <label for="producto">Producto</label>
+                <select name="producto" id="producto">
+                  <option value="Americana">Americana</option>
+                  <option value="Hawaiana">Hawaiana</option>
+                </select>
+                {{ render_field(form.cantidad) }}
+                <input type="submit" class="btn btn-primary" value="Submit" />
+          </form>
+        </div>
+    
     <table class="default">
         <thead>
             <tr>
@@ -116,11 +119,7 @@
                 <td>
                     <p>{{curso.cantidad}}</p>
                 </td>
-                <td>
-                    <a href="actualizar/{{curso.id}}">
-                        <button id = {{curso.id}} class="btn btn-primary">Actualizar</button>
-                    </a>
-                </td>
+                
                 <td>
                     <button id = {{curso.id}} class="btn btn-primary" onclick="delete_data({{curso.id}})">Borrar</button>
                 </td>

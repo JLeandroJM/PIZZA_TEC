@@ -149,17 +149,7 @@ def agregar(user):
     response['user'] = carrito.id_usuario
     return jsonify(response)
 
-@app.route('/actualizar/<id>', methods=['GET','POST'])
-@login_required
-def actualizar(id):
-    form = forms.ProductList(request.form)
-    if request.method == 'POST':
-        carrito = Carrito.query.filter(Carrito.id == id).one_or_none()
-        Carrito.producto = form.producto.data
-        Carrito.cantidad = int(form.cantidad.data)
-        db.session.commit()
-        return redirect(url_for('login.inicio'))
-    return render_template('actualizar.html', form = form, id=id)
+
 
 @app.route('/delete/<id>', methods=['DELETE'])
 @login_required

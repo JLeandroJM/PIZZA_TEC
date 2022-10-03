@@ -17,7 +17,10 @@ class Usuario(UserMixin, db.Model):
         self.password_hashed = password
         
     
-    @property    
+    @property  
+    def password(self):
+        raise AttributeError('Password is not readable')
+          
     def check_password(self,password):
         return self.password_hashed == password
     
