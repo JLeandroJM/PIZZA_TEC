@@ -20,7 +20,7 @@ class Usuario(UserMixin, db.Model):
     @property  
     def password(self):
         raise AttributeError('Password is not readable')
-          
+
     def check_password(self,password):
         return self.password_hashed == password
     
@@ -59,18 +59,18 @@ class Carrito(db.Model):
     __tablename__ = "carrito"
     id = db.Column(db.Integer(), primary_key=True)
     id_usuario = db.Column(db.String(50), db.ForeignKey('usuario.email'), nullable=False)
-    producto = db.Column(db.String(20), db.ForeignKey('pizzas.name'), nullable=False)
-    #producto_id = db.Column(db.Integer(), db.ForeignKey('pizzas.id'), nullable=False)
-  #  price = db.Column(db.Integer(), db.ForeignKey('pizzas.price'), nullable=False)
-    cantidad = db.Column(db.Integer, nullable = False)   
-    
+    producto = db.Column(db.String(20), db.ForeignKey('pizzas.name'), nullable=False)  
+    cantidad = db.Column(db.Integer, nullable = False) 
+    size =    db.Column(db.String(50), nullable = False)    
     usuario = db.relationship("Usuario", backref="carrito")  
     pizzas = db.relationship("Pizzas", backref="carrito") 
+
 
     def __repr__(self):
         response = {}
         
-        response['pizza'] = self.pizza
+        response['producto'] = self.producto
+        response['size'] = self.size
         response['usuario'] = self.id_usuario 
         response['price'] = self.price
         response['cantidad'] = self.cantidad

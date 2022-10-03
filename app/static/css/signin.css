@@ -156,6 +156,7 @@ body{
     width: 100%;
     text-align: center;
     position: relative;
+    left: 30px;
 
 }
 .a{
@@ -195,6 +196,7 @@ body {
     -webkit-box-pack: center;
        -ms-flex-pack: center;
      justify-content: center;
+    
 
       
     
@@ -208,3 +210,36 @@ body {
 }
 
 
+
+.mover{
+    position: relative;
+    top: 100px;
+    left: 80px;
+    right: 20px;
+    width: 370px;
+    bottom: 0;
+
+}
+
+.btn-home{
+    color:rgb(129, 16, 54);
+    position: relative;
+    top: 0;
+    left: 90px;
+    width: 190px;
+    bottom: 0;
+    padding: 0;
+    border: none;
+    background: none;
+
+    
+}
+
+.btn-home:hover > a{
+    color:rgb(51, 7, 7);
+    text-decoration: none;
+}
+.btn-home:focus{
+    box-shadow:0 0 0 .2rem aliceblue
+}
+   

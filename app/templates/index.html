@@ -62,20 +62,25 @@
             display: flex;
             margin: 0 !important;
             flex-direction: row;
+            bottom: 50px;
         }
         form{
             margin: 0%;
         }
         .form{
-            height: 100%;
+            background-color: rgb(192, 154, 72);
+            height: 40%;
             
-            width: 40%;
+            width: 36%;
         }
         .default{
+            background-color: aqua;
+            
             height: 100%;
             margin: 0;
             margin-right: 10%;
             width: 70%;
+            border: none;
         }
         .formulario{
             width: 70% !important;
@@ -83,64 +88,105 @@
 
             height: 100%;
         }
+
+        .product1{
+            border: none;
+            position: relative;
+            left: 60px;
+        }
+
+        .product{
+            border: none;
+            position: relative;
+            left: 140px;
+        }
+        .fondo2{
+            background-image: url("../static/css/img/mesa.jpg");
+            content: "";
+    
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+        }
+        .titulo{
+            position: relative;
+            right: 0;
+        }
         
         </style>
 </head>
 <body>
-    <h1>Tu Carrito</h1>
-    <div class="main">
-        <div class="form">
-            <form method=post class="formulario">
-                <label for="producto">Producto</label>
-                <select name="producto" id="producto">
-                  <option value="Americana">Americana</option>
-                  <option value="Hawaiana">Hawaiana</option>
-                </select>
-                {{ render_field(form.cantidad) }}
-                <input type="submit" class="btn btn-primary" value="Submit" />
-          </form>
+    <div class = "fondo2">
+        <div class = "titulo">
+            <h1 style="color: white;">Tu Carrito</h1>
         </div>
+        
+        <div class="main">
+            <div class="form">
+                <form method=post class="formulario">
+                    <label for="producto">Producto</label>
+                    <select name="producto" id="producto">
+                      <option value="Americana">Americana</option>
+                      <option value="Hawaiana">Hawaiana</option>
+                    </select>
+                    {{ render_field(form.cantidad) }}
+                    {{ render_field(form.size) }}
+                    <input type="submit" class="btn btn-primary" value="Submit" />
+              </form>
+            </div>
+        
     
-    <table class="default">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-            </tr>
-            {% for curso in cursos%}
-            <tr>
-                <td id = "alumno">
-                    {{curso.id}}
-                </td>
-                <td>
-                    <button id = {{curso.id}} onclick="show_data({{curso.id}})">{{curso.producto}}</button>
-                </td>
-                <td>
-                    <p>{{curso.cantidad}}</p>
-                </td>
-                
-                <td>
-                    <button id = {{curso.id}} class="btn btn-primary" onclick="delete_data({{curso.id}})">Borrar</button>
-                </td>
-            </tr>
-            {% endfor %}
-        </thead>
-
-    </table>
+            <table class="default">
+                <thead>
+                    <tr>
+                        
+                        <th>Producto</th>
+                        <th>Tamaño</th>
+                        <th>Nro</th>
+                       
+                    </tr>
+                    {% for curso in cursos%}
+                    <tr>
+                        
+                        <td class ="product">
+                            <button id = {{curso.id}} onclick="show_data({{curso.id}})">{{curso.producto}}</button>
+                        </td>
     
-</div>
-    <div id="show-info" class="hidden">
-        <div class="box">
-        <div id="content">
-            <h1>Datos del Carrito</h1>
-            <ul id = 'todos'>
-
-            </ul>
-            <button onclick="ocultar()">Cerrar</button>
+                        <td class="product1">
+                            <p>{{curso.size}}</p>
+                        </td>
+                        <td class="product1">
+                            <p>{{curso.cantidad}}</p>
+                        </td>
+                        
+                        <td class="product1">
+                            <button id = {{curso.id}} class="btn btn-primary" onclick="delete_data({{curso.id}})">Borrar</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </thead>
+        
+            </table>
+            
+    
+        
+    
+        <div id="show-info" class="hidden">
+            <div class="box">
+            <div id="content">
+                <h1>Datos del Carrito</h1>
+                <ul id = 'todos'>
+    
+                </ul>
+                <button onclick="ocultar()">Cerrar</button>
+            </div>
+        </div>
         </div>
     </div>
-    </div>
+    
 </body>
 </html>
 

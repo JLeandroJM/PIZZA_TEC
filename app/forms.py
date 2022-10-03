@@ -47,10 +47,14 @@ class ProductList(Form):
 
     producto = StringField(
                 'Producto',
-                [validators.DataRequired(message= 'Debes colocar un correo')]
+                [validators.DataRequired(message= 'Selecciona una pizza')]
                 )
     cantidad =  StringField(
                  'Cantidad',
+                 [validators.DataRequired(message = 'Debes seccionar una cantidad')]
+                )
+    size = StringField(
+                 'Tamaño',
                  [validators.DataRequired(message = 'Espacio requerido')]
                 )
 

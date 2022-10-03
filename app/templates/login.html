@@ -7,39 +7,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="..\static\css\signin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 
     <title>Login</title>
 </head>
 <body class="fondo"  >
+
+    
+
     <div class="cuerpo">
+        <div class = "mover">
 
-        <div class="cuerpo-content">
+            <div class="cuerpo-content">
            
-            <div class="textos">
-                <h1>Sign In</h1>
-                <h3>Your Account</h3>
+                <div class="textos">
+                    <h1 style="font-size: 60px; font-family: Sofia, sans-serif;">Sign In</h1>
+                    <h3 style="font-size: 60px; font-family: Sofia, sans-serif;">Your Account</h3>
+                </div>
+                <br> 
+            </br>
+                <div class="form">
+                  <form method=post class="formulario">
+                    
+                      {{ render_field(form.username) }}
+                      {{ render_field(form.password) }}
+                      <br> 
+                    </br>
+                    
+                    <input type="submit" class="btn btn-primary" value="Login">
+                  </form>
+                  
+                </div>
+                <div class="textos">
+                    <h3>¿No tienes cuenta? <a href="/sign-up">Regístrate</a></h3>
+                </div>
+    
             </div>
-            <br> 
-        </br>
-            <div class="form">
-              <form method=post class="formulario">
-                
-                  {{ render_field(form.username) }}
-                  {{ render_field(form.password) }}
-                  <br> 
-                </br>
-                
-                <input type="submit" class="btn btn-primary" value="Register">
-              </form>
-              
-            </div>
-            <div class="textos">
-                <h3>¿No tienes cuenta? <a href="/sign-up">Regístrate</a></h3>
-            </div>
-
         </div>
+
         
     </div>
+
+    <div class="img" ">
+        <button class="btn-home"><a href="/" style="font-size: 40px; font-family: Sofia, sans-serif;">Home</a></button>
+    </div>
+    
 </body>
+
 <script src="../static/js/index.js?token="></script>
 </html>
