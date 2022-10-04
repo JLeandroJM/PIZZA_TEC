@@ -5,131 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\static\css\index.css">
     <title>Inicio</title>
-    <style>
-        #show-info{
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(51, 146, 214, 0.4);
-        }
-        .box {
-            
-            position: relative;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            height: 100%;
-            -webkit-box-align: center;
-               -ms-flex-align: center;
-                  align-items: center;
-            -webkit-box-pack: center;
-               -ms-flex-pack: center;
-             justify-content: center;
-
-        }
-        #content{
-            text-align: center;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            flex-direction: column;
-            -webkit-box-align: center;
-               -ms-flex-align: center;
-                  align-items: center;
-            -webkit-box-pack: center;
-               -ms-flex-pack: center;
-             justify-content: center;
-            height: 60%;
-            width: 30%;
-            background: #333;
-            color: aqua;
-        }
-        #todos{
-            list-style-type: none;
-        }
-        table, td {
-          border: 1px solid black;
-        }
-        .hidden {
-                display: none;
-                padding: 25px;
-                margin-bottom: 50px;
-            }
-        .main{
-            height: 100%;
-            width: 100%;
-            display: flex;
-            margin: 0 !important;
-            flex-direction: row;
-            bottom: 50px;
-        }
-        form{
-            margin: 0%;
-        }
-        .form{
-            
-            
-            height: 40%;
-            
-            width: 36%;
-        }
-        .default{
-            
-            background-color:beige;
-            height: 100%;
-            margin: 0;
-            margin-right: 10%;
-            width: 70%;
-            border: none;
-            
-        }
-        .formulario{
-            
-            width: 70% !important;
-            margin-left: 10%;
-
-            height: 100%;
-        }
-
-        .product1{
-            border: none;
-            position: relative;
-            left: 60px;
-           
-        }
-
-        .product{
-            border: none;
-            position: relative;
-            left: 140px;
-        }
-        .fondo2{
-            background-image: url("../static/css/img/mesa.jpg");
-            content: "";
     
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-        }
-        .nombrecitos{
-            position: relative;
-            top: 30px;
-        }
-        .titulo{
-            left :60px;
-            position: relative;
-            right: 0;
-        }
-        .pro{
-            color:white;
-        }
-        
-        </style>
 </head>
 <body>
     <div class = "fondo2">
@@ -148,6 +26,9 @@
                       <option value="Chicken BBQ">Chicken BBQ</option>
                       <option value="Suprema">Suprema</option>
                       <option value="Napolitana">Napolitana</option>
+                      <option value="Margarita">Margarita</option>
+                      <option value="Meet Lover">Meet Lover</option>
+                      <option value="Champiñones">Champiñones</option>
                       
                     </select>
                     {{ render_field(form.cantidad) }}
@@ -168,29 +49,23 @@
     
             <table class="default">
                 <thead>
-                    <tr class="nombrecitos">
-                        
-                        <th >Producto</th>
-                        <th >Tamaño</th>
-                        <th >Nro</th>
-                       
-                    </tr>
-                    {% for curso in cursos%}
+                    
+                    {% for pizza in pizzas%}
                     <tr>
                         
                         <td class ="product">
-                            <button id = {{curso.id}} onclick="show_data({{curso.id}})">{{curso.producto}}</button>
+                            <button id = {{pizza.id}} onclick="show_data({{pizza.id}})">{{pizza.producto}}</button>
                         </td>
     
                         <td class="product1">
-                            <p>{{curso.size}}</p>
+                            <p>{{pizza.size}}</p>
                         </td>
                         <td class="product1">
-                            <p>{{curso.cantidad}}</p>
+                            <p>{{pizza.cantidad}}</p>
                         </td>
                         
-                        <td class="product1">
-                            <button id = {{curso.id}} class="btn btn-primary" onclick="delete_data({{curso.id}})">Borrar</button>
+                        <td class="product2">
+                            <button id = {{pizza.id}} class="btn btn-primary" onclick="delete_data({{pizza.id}})" style="background-color: red; color: azure;">Borrar</button>
                         </td>
                     </tr>
                     {% endfor %}
@@ -204,7 +79,7 @@
         <div id="show-info" class="hidden">
             <div class="box">
             <div id="content">
-                <h1>Datos del Carrito</h1>
+                <h1>Datos de la pizza</h1>
                 <ul id = 'todos'>
     
                 </ul>
@@ -240,10 +115,7 @@
             li3.innerHTML = responseJson['cantidad'];
 
             li4.innerHTML = responseJson['size'];
-            document.getElementById('todos').appendChild(li1);
-            document.getElementById('todos').appendChild(li2);
-            document.getElementById('todos').appendChild(li3);
-            document.getElementById('todos').appendChild(li4);
+        
 
             document.getElementById('show-info').className = '';
         })

@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_login import LoginManager
 from .config.config import Config
 from .db.database import db, migrate
-from .home import app as appViews, init_login
+from .routes import app as appViews, init_login
 from .db.database import db
 app = None
 def create_app():

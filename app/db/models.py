@@ -1,7 +1,6 @@
 # Importar las librerias
-from enum import unique
-from flask import Flask, jsonify, url_for, render_template, request
-from flask_sqlalchemy import SQLAlchemy
+
+
 from flask_login import UserMixin
 from .database import db
 
@@ -54,6 +53,8 @@ class Pizzas(db.Model):
         return response
     
     
+
+
 
 class Carrito(db.Model):
     __tablename__ = "carrito"

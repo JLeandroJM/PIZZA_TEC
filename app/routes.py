@@ -1,37 +1,30 @@
-from distutils.errors import PreprocessError
-from http import client
-import json
-from msilib import CAB
-import os
-from os import access, getenv
-from unicodedata import name
-from urllib import response
+
+
+
 from flask import (
     Blueprint,
-    Flask,
-    flash,
-    abort,
+  
     jsonify,
     render_template, 
     redirect, 
-    session, 
+ 
     url_for, 
     request
 )
 from flask_login import (
     LoginManager, 
-    UserMixin, 
+
     login_user, 
     login_required,
     current_user
 )
-import hashlib
-from itsdangerous import SignatureExpired, URLSafeTimedSerializer
+
+
 from .db.database import db
 
 from . import forms 
 from .db.models import Carrito, Usuario, Pizzas
-from werkzeug.utils import secure_filename
+
 
 app = Blueprint('login', __name__, 
                 template_folder='templates')  
@@ -55,14 +48,14 @@ def index():
 
     
     p2 = Pizzas(name = "Peperoni",size = "personal",price =10)
-    p3 = Pizzas(name = "Hawaiana",size = "personal",price =10)
+    p3 = Pizzas(name = "Hawaiana",size = "familiar",price =45)
     p4 = Pizzas(name = "Vegetariana",size = "personal",price =10)
-    p5 = Pizzas(name = "Chicken BBQ",size = "personal",price =10)
+    p5 = Pizzas(name = "Chicken BBQ",size = "mediana",price =30)
     p6 = Pizzas(name = "Suprema",size = "personal",price =10)
-    p7 = Pizzas(name = "Napolitana",size = "personal",price =10)
+    p7 = Pizzas(name = "Napolitana",size = "familiar",price =47)
     p8 = Pizzas(name = "Margarita",size = "personal",price =10)
-    p9 = Pizzas(name = "Meet Lover",size = "personal",price =10)
-    p10 = Pizzas(name = "Champiñones",size = "personal",price =10)
+    p9 = Pizzas(name = "Meet Lover",size = "mediana",price =37)
+    p10 = Pizzas(name = "Champiñones",size = "personal",price =11)
 
     
     lista =[p2,p3,p4,p5,p6,p7,p8,p9,p10]
@@ -136,18 +129,18 @@ def inicio():
         
     subquery = db.session.query(Carrito.id).filter(Carrito.id_usuario == current_user.email).subquery()
     p = Carrito.query.filter(Carrito.id.in_(subquery)).order_by('id').all()   
-    return render_template('index.html', form = form, cursos = p)
+    return render_template('index.html', form = form, pizzas = p)
 
-@app.route('/show-data/<user>', methods=['GET'])
+@app.route('/show-data/<pizza>', methods=['GET'])
 @login_required
-def agregar(user):
+def agregar(pizza):
     response = {}
-    id = int(user)
+    id = int(pizza)
     todo = Carrito(id=id)
-    carrito = Carrito.query.get(user)
+    carrito = Carrito.query.get(pizza)
     response['producto'] = carrito.producto
     response['cantidad'] = carrito.cantidad
-    response['user'] = carrito.id_usuario
+    response['pizza'] = carrito.id_usuario
     return jsonify(response)
 
 
