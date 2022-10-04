@@ -124,6 +124,7 @@ def inicio():
                     producto=form.producto.data,  
                     cantidad = form.cantidad.data,
                     id_usuario= current_user.email,
+                    size = form.size.data,
                 )
         db.session.add(productlist)  
         db.session.commit()

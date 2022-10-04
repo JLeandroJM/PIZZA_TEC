@@ -15,6 +15,7 @@
             background-color: rgba(51, 146, 214, 0.4);
         }
         .box {
+            
             position: relative;
             display: -webkit-box;
             display: -ms-flexbox;
@@ -68,21 +69,24 @@
             margin: 0%;
         }
         .form{
-            background-color: rgb(192, 154, 72);
+            
+            
             height: 40%;
             
             width: 36%;
         }
         .default{
-            background-color: aqua;
             
+            background-color:beige;
             height: 100%;
             margin: 0;
             margin-right: 10%;
             width: 70%;
             border: none;
+            
         }
         .formulario{
+            
             width: 70% !important;
             margin-left: 10%;
 
@@ -93,6 +97,7 @@
             border: none;
             position: relative;
             left: 60px;
+           
         }
 
         .product{
@@ -111,9 +116,17 @@
     bottom: 0px;
     left: 0px;
         }
+        .nombrecitos{
+            position: relative;
+            top: 30px;
+        }
         .titulo{
+            left :60px;
             position: relative;
             right: 0;
+        }
+        .pro{
+            color:white;
         }
         
         </style>
@@ -127,13 +140,27 @@
         <div class="main">
             <div class="form">
                 <form method=post class="formulario">
-                    <label for="producto">Producto</label>
-                    <select name="producto" id="producto">
+                    <label for="producto" class="pro" >Producto</label>
+                    <select name="producto" id="producto" >
                       <option value="Americana">Americana</option>
                       <option value="Hawaiana">Hawaiana</option>
+                      <option value="Vegetariana">Vegetariana</option>
+                      <option value="Chicken BBQ">Chicken BBQ</option>
+                      <option value="Suprema">Suprema</option>
+                      <option value="Napolitana">Napolitana</option>
+                      
                     </select>
                     {{ render_field(form.cantidad) }}
-                    {{ render_field(form.size) }}
+                    <label for="size" class="pro" >Size</label>
+                    <select name="size" id="size" >
+                      <option value="personal">personal</option>
+                      <option value="mediana">mediana</option>
+                      <option value="familiar">familiar</option>
+                      
+                      
+                    </select>
+                    <br>
+                </br>
                     <input type="submit" class="btn btn-primary" value="Submit" />
               </form>
             </div>
@@ -141,11 +168,11 @@
     
             <table class="default">
                 <thead>
-                    <tr>
+                    <tr class="nombrecitos">
                         
-                        <th>Producto</th>
-                        <th>Tamaño</th>
-                        <th>Nro</th>
+                        <th >Producto</th>
+                        <th >Tamaño</th>
+                        <th >Nro</th>
                        
                     </tr>
                     {% for curso in cursos%}
@@ -207,12 +234,16 @@
             const li1 = document.createElement('li');
             const li2 = document.createElement('li');
             const li3 = document.createElement('li');
+            const li4 = document.createElement('li');
             li1.innerHTML = responseJson['user'];
             li2.innerHTML = responseJson['producto'];
             li3.innerHTML = responseJson['cantidad'];
+
+            li4.innerHTML = responseJson['size'];
             document.getElementById('todos').appendChild(li1);
             document.getElementById('todos').appendChild(li2);
             document.getElementById('todos').appendChild(li3);
+            document.getElementById('todos').appendChild(li4);
 
             document.getElementById('show-info').className = '';
         })

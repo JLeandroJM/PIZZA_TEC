@@ -126,6 +126,7 @@ body{
     width: 90%;
 }
 .sep{
+    color: #fff;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
